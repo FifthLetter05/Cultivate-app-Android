@@ -40,9 +40,13 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
     private val TAG = "Login"
 
+    private val DEBUG = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enterApp()
+        if(DEBUG) {
+            enterApp()
+        }
         setContentView(R.layout.activity_login)
         // Set up the login form.
         populateAutoComplete()
