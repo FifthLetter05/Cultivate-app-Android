@@ -38,11 +38,15 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
      */
     private var mAuthTask: UserLoginTask? = null
 
-    private val TAG = "Login"
+    private val TAG = "General"
+    private val DEBUG = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enterApp()
+        if(DEBUG) {
+            enterApp()
+        }
+        title = "Log In"
         setContentView(R.layout.activity_login)
         // Set up the login form.
         populateAutoComplete()
@@ -150,12 +154,12 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
     private fun isEmailValid(email: String): Boolean {
         //TODO: Replace this with your own logic
-        return email.contains("@")
+        return true
     }
 
     private fun isPasswordValid(password: String): Boolean {
         //TODO: Replace this with your own logic
-        return password.length > 4
+        return true
     }
 
     /**
