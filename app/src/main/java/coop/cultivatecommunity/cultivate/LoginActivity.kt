@@ -38,7 +38,6 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
      */
     private var mAuthTask: UserLoginTask? = null
 
-    private val TAG = "General"
     private val DEBUG = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

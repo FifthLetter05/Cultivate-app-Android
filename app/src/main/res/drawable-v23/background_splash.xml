@@ -6,10 +6,9 @@
 
     <item
         android:drawable="@drawable/logo"
-        android:top="200dp"
-        android:bottom="200dp"
-        android:right="44dp"
-        android:left="43dp"
+        android:gravity="center"
+        android:height="230dp"
+        android:width="273dp"
         />
 
 </layer-list>
