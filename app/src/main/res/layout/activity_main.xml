@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context="coop.cultivatecommunity.cultivate.MainActivity">
 
-    <ViewStub
-        android:id="@+id/viewStub"
-        android:layout_width="318dp"
-        android:layout_height="174dp"
-        android:layout_marginBottom="8dp"
-        android:layout="@layout/content_main"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
@@ -27,6 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation"
+        android:theme="@style/SecondAppTheme"/>
 
 </android.support.constraint.ConstraintLayout>

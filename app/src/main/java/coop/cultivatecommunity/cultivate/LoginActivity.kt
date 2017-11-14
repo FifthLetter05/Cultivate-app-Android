@@ -38,15 +38,15 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
      */
     private var mAuthTask: UserLoginTask? = null
 
-    private val DEBUG = false
+    private val DEBUG = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title = "Log In"
+        setContentView(R.layout.activity_login)
         if(DEBUG) {
             enterApp()
         }
-        title = "Log In"
-        setContentView(R.layout.activity_login)
         // Set up the login form.
         populateAutoComplete()
         password.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
@@ -58,6 +58,20 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         })
 
         email_sign_in_button.setOnClickListener { attemptLogin() }
+    }
+
+    //enters the main activity
+    private fun enterApp(){
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    object ProfileQuery {
+        val PROJECTION = arrayOf(
+                ContactsContract.CommonDataKinds.Email.ADDRESS,
+                ContactsContract.CommonDataKinds.Email.IS_PRIMARY)
+        val ADDRESS = 0
+        val IS_PRIMARY = 1
     }
 
     private fun populateAutoComplete() {
@@ -237,19 +251,6 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         email.setAdapter(adapter)
     }
 
-    private fun enterApp(){
-        intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
-
-    object ProfileQuery {
-        val PROJECTION = arrayOf(
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY)
-        val ADDRESS = 0
-        val IS_PRIMARY = 1
-    }
-
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -284,7 +285,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             if (success!!) {
                 Log.i(TAG, "finish")
                 enterApp()
-                //finish()
+                finish()
             } else {
                 password.error = getString(R.string.error_incorrect_password)
                 password.requestFocus()

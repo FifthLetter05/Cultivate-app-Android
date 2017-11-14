@@ -1,6 +1,8 @@
 package coop.cultivatecommunity.cultivate
 
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.support.annotation.LayoutRes
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
@@ -10,17 +12,29 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var content: View? = null
+    lateinit var content: View
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        content = createMainView(R.layout.content_main)
+        container.addView(content)
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
                 container.removeView(content)
-                container.addView(LayoutInflater.from(this).inflate(R.layout.content_main, container, false))
+                content = createMainView(R.layout.content_main)
+                container.addView(content)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                //message.setText(R.string.title_dashboard)
+                container.removeView(content)
+                content = createMainView(R.layout.content_extra)
+                container.addView(content)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
@@ -31,12 +45,7 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        viewStub.layoutResource = R.layout.content_main
-        content = viewStub.inflate()
-
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    private fun createMainView(@LayoutRes res: Int): View{
+        return LayoutInflater.from(this).inflate(res, container, false)
     }
 }
