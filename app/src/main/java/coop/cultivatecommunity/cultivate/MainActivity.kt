@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    private fun createMainView(@LayoutRes res: Int): View{
-        return LayoutInflater.from(this).inflate(res, container, false)
-    }
+    private fun createMainView(@LayoutRes res: Int): View =
+            LayoutInflater.from(this).inflate(res, container, false)
 }
