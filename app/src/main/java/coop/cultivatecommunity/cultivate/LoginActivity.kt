@@ -23,7 +23,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_login.*
-import org.jetbrains.annotations.Nullable
 import java.util.*
 
 /**
