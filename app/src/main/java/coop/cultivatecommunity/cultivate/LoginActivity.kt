@@ -127,6 +127,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         }
 
         loaderManager.initLoader(0, null, this)
+        Log.i(TAG, "populated auto complete")
     }
 
     private fun mayRequestContacts(): Boolean {
@@ -269,7 +270,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             if (success!!) {
                 Log.i(TAG, "finish")
                 enterApp()
-                finish()
+                //finish()
             } else {
                 password.error = getString(R.string.error_incorrect_password)
                 password.requestFocus()

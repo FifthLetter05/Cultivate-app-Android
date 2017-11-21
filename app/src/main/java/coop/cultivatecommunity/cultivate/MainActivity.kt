@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //content = createMainView(R.layout.content_main)
-        //container.addView(content)
+        content = createMainView(R.layout.activity_item_list)
+        container.addView(content)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
@@ -26,15 +26,15 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                //container.removeView(content)
-                //content = createMainView(R.layout.content_main)
-                //container.addView(content)
+                container.removeView(content)
+                content = createMainView(R.layout.activity_item_list)
+                container.addView(content)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                //container.removeView(content)
-                //content = createMainView(R.layout.content_extra)
-                //container.addView(content)
+                container.removeView(content)
+                content = createMainView(R.layout.activity_item_detail)
+                container.addView(content)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {

@@ -38,17 +38,17 @@
                 android:value="coop.cultivatecommunity.cultivate.LoginActivity" />
         </activity>
         <activity
-            android:name=".ItemListActivity"
+            android:name=".detailFlowActivity.ItemListActivity"
             android:label="@string/title_item_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ItemDetailActivity"
+            android:name=".detailFlowActivity.ItemDetailActivity"
             android:label="@string/title_item_detail"
-            android:parentActivityName=".ItemListActivity"
+            android:parentActivityName=".detailFlowActivity.ItemListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="coop.cultivatecommunity.cultivate.ItemListActivity" />
+                android:value="coop.cultivatecommunity.cultivate.detailFlowActivity.ItemListActivity" />
         </activity>
     </application>
 
