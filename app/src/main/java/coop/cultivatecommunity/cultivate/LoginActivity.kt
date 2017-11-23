@@ -23,6 +23,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_login.*
+import java.sql.Ref
 import java.util.*
 
 /**
@@ -38,7 +39,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState)
         title = "Log In"
         setContentView(R.layout.activity_login)
-        if(DEBUG) {
+        if(Reference.DEBUG) {
             enterApp()
         }
         // Set up the login form.
@@ -103,7 +104,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             showProgress(true)
             mAuthTask = UserLoginTask(emailStr, passwordStr)
             mAuthTask!!.execute(null as Void?)
-            Log.i(TAG, "authenticated")
+            Log.i(Reference.TAG, "authenticated")
         }
     }
 
@@ -127,7 +128,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         }
 
         loaderManager.initLoader(0, null, this)
-        Log.i(TAG, "populated auto complete")
+        Log.i(Reference.TAG, "populated auto complete")
     }
 
     private fun mayRequestContacts(): Boolean {
@@ -268,7 +269,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             showProgress(false)
 
             if (success!!) {
-                Log.i(TAG, "finish")
+                Log.i(Reference.TAG, "finish")
                 enterApp()
                 //finish()
             } else {

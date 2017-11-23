@@ -1,4 +1,6 @@
 package coop.cultivatecommunity.cultivate
 
-val TAG = "General"
-val DEBUG = false
+object Reference{
+    val TAG = "General"
+    val DEBUG = false
+}
