@@ -23,7 +23,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_login.*
-import java.sql.Ref
 import java.util.*
 
 /**
@@ -39,7 +38,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState)
         title = "Log In"
         setContentView(R.layout.activity_login)
-        if(Reference.DEBUG) {
+        if(Reference.AUTO_LOGIN) {
             enterApp()
         }
         // Set up the login form.
@@ -110,7 +109,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
     //enters the main activity
     private fun enterApp(){
-        intent = Intent(this, MainActivity::class.java)
+        intent = Intent(this, BottomNavActivity::class.java)
         startActivity(intent)
     }
 

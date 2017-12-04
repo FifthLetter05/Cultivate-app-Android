@@ -10,7 +10,7 @@ import android.view.Menu
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+open class BottomNavActivity : AppCompatActivity() {
 
     lateinit var content: View
 
