@@ -22,8 +22,8 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import coop.cultivatecommunity.cultivate.detailFlowActivity.ItemListActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import java.sql.Ref
 import java.util.*
 
 /**
@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState)
         title = "Log In"
         setContentView(R.layout.activity_login)
-        if(Reference.DEBUG) {
+        if(Reference.AUTO_LOGIN) {
             enterApp()
         }
         // Set up the login form.
@@ -108,68 +108,6 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         }
     }
 
-    //enters the main activity
-    private fun enterApp(){
-        intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
-
-    object ProfileQuery {
-        val PROJECTION = arrayOf(
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY)
-        val ADDRESS = 0
-        val IS_PRIMARY = 1
-    }
-
-    private fun populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return
-        }
-
-        loaderManager.initLoader(0, null, this)
-        Log.i(Reference.TAG, "populated auto complete")
-    }
-
-    private fun mayRequestContacts(): Boolean {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(email, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok,
-                            { requestPermissions(arrayOf(READ_CONTACTS), REQUEST_READ_CONTACTS) })
-        } else {
-            requestPermissions(arrayOf(READ_CONTACTS), REQUEST_READ_CONTACTS)
-        }
-        return false
-    }
-
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
-                                            grantResults: IntArray) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.size == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete()
-            }
-        }
-    }
-
-    private fun isEmailValid(email: String): Boolean {
-        //TODO: Replace this with your own logic
-        return true
-    }
-
-    private fun isPasswordValid(password: String): Boolean {
-        //TODO: Replace this with your own logic
-        return true
-    }
-
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -198,6 +136,50 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
                         login_progress.visibility = if (show) View.VISIBLE else View.GONE
                     }
                 })
+    }
+
+    //enters the main activity
+    private fun enterApp(){
+        intent = Intent(this, ItemListActivity::class.java)
+        startActivity(intent)
+    }
+
+    object ProfileQuery {
+        val PROJECTION = arrayOf(
+                ContactsContract.CommonDataKinds.Email.ADDRESS,
+                ContactsContract.CommonDataKinds.Email.IS_PRIMARY)
+        val ADDRESS = 0
+        val IS_PRIMARY = 1
+    }
+
+    /**
+     * Initializing auto complete
+     */
+
+    private fun populateAutoComplete() {
+        if (!mayRequestContacts()) {
+            return
+        }
+
+        loaderManager.initLoader(0, null, this)
+        Log.i(Reference.TAG, "populated auto complete")
+    }
+
+    private fun mayRequestContacts(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return true
+        }
+        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+            return true
+        }
+        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
+            Snackbar.make(email, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(android.R.string.ok,
+                            { requestPermissions(arrayOf(READ_CONTACTS), REQUEST_READ_CONTACTS) })
+        } else {
+            requestPermissions(arrayOf(READ_CONTACTS), REQUEST_READ_CONTACTS)
+        }
+        return false
     }
 
     override fun onCreateLoader(i: Int, bundle: Bundle?): Loader<Cursor> {
@@ -236,6 +218,28 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
                 android.R.layout.simple_dropdown_item_1line, emailAddressCollection)
 
         email.setAdapter(adapter)
+    }
+
+    /**
+     * Callback received when a permissions request has been completed.
+     */
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
+                                            grantResults: IntArray) {
+        if (requestCode == REQUEST_READ_CONTACTS) {
+            if (grantResults.size == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                populateAutoComplete()
+            }
+        }
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        //TODO: Replace this with your own logic
+        return true
+    }
+
+    private fun isPasswordValid(password: String): Boolean {
+        //TODO: Replace this with your own logic
+        return true
     }
 
     /**

@@ -1,4 +1,4 @@
-@if "%DEBUG%" == "" @echo off
+@if "%AUTO_LOGIN%" == "" @echo off
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows

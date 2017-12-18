@@ -31,11 +31,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="coop.cultivatecommunity.cultivate.LoginActivity" />
         </activity>
         <activity
             android:name=".detailFlowActivity.ItemListActivity"
