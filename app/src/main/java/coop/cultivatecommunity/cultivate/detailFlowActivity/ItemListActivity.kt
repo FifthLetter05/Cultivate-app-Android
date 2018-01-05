@@ -3,7 +3,7 @@ package coop.cultivatecommunity.cultivate.detailFlowActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.RecyclerView
-import coop.cultivatecommunity.cultivate.BaseActivity
+import coop.cultivatecommunity.cultivate.BaseNavActivity
 import coop.cultivatecommunity.cultivate.R
 import coop.cultivatecommunity.cultivate.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_item_list.*
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.item_list.*
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-class ItemListActivity : BaseActivity() {
+class ItemListActivity : BaseNavActivity() {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
