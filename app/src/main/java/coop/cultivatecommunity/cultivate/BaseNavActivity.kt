@@ -10,7 +10,7 @@ import android.view.Window
 import coop.cultivatecommunity.cultivate.detailFlowActivity.ItemDetailActivity
 import coop.cultivatecommunity.cultivate.detailFlowActivity.ItemListActivity
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseNavActivity : AppCompatActivity() {
 
     lateinit var navigationView: BottomNavigationView
 
@@ -26,6 +26,8 @@ abstract class BaseActivity : AppCompatActivity() {
         navigationView = findViewById(R.id.navigation)
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigationView.setOnNavigationItemReselectedListener(mOnNavigationItemReselectedListener)
+
+        BottomNavHelper.disableShiftMode(navigationView)
     }
 
     override fun onStart() {
@@ -67,7 +69,7 @@ abstract class BaseActivity : AppCompatActivity() {
         selectBottomNavigationBarItem(actionId)
     }
 
-    fun selectBottomNavigationBarItem(itemId: Int) {
+    private fun selectBottomNavigationBarItem(itemId: Int) {
         val menu = navigationView.menu
         val size = menu.size()
         for (i in 0..(size-1)) {
