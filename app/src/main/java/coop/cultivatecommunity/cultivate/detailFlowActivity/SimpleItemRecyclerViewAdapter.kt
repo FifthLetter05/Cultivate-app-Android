@@ -24,7 +24,7 @@ class SimpleItemRecyclerViewAdapter(private val mParentActivity: ItemListActivit
             if (mTwoPane) {
                 val fragment = ItemDetailFragment().apply {
                     arguments = Bundle()
-                    arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id)
+                    arguments!!.putString(ItemDetailFragment.ARG_ITEM_ID, item.id)
                 }
                 mParentActivity.supportFragmentManager
                         .beginTransaction()
