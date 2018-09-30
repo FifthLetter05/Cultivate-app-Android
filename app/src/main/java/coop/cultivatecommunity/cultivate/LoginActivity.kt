@@ -23,6 +23,8 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import coop.cultivatecommunity.cultivate.R.id.email_sign_in_button
+import coop.cultivatecommunity.cultivate.R.id.password
 import coop.cultivatecommunity.cultivate.detailFlowActivity.ItemListActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.*
@@ -34,7 +36,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private var mAuthTask: UserLoginTask? = null
+    var mAuthTask: UserLoginTask? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

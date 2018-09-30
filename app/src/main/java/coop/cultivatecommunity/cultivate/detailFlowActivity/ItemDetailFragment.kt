@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.item_detail.view.*
  */
 class ItemDetailFragment : Fragment() {
 
+
     /**
      * The dummy content this fragment is presenting.
      */
