@@ -25,7 +25,7 @@ class NetworkFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mUrlString = arguments.getString(URL_KEY)
+        mUrlString = arguments?.getString(URL_KEY)
         // Retain this Fragment across configuration changes in the host Activity.
         retainInstance = true
     }

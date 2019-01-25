@@ -57,7 +57,7 @@ class ItemListActivity() : BaseNavActivity(), DownloadCallback<Any> {
             mTwoPane = true
         }
 
-        mNetworkFragment = NetworkFragment.getInstance(supportFragmentManager, "https://www.google.com")
+        //mNetworkFragment = NetworkFragment.getInstance(supportFragmentManager, "https://www.google.com")
 
         setupRecyclerView(item_list)
     }

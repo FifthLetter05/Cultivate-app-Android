@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.item_detail.view.*
  */
 class ItemDetailFragment : Fragment() {
 
+
     /**
      * The dummy content this fragment is presenting.
      */
@@ -26,13 +27,13 @@ class ItemDetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (arguments.containsKey(ARG_ITEM_ID)) {
+        if (arguments!!.containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = DummyContent.ITEM_MAP[arguments.getString(ARG_ITEM_ID)]
+            mItem = DummyContent.ITEM_MAP[arguments?.getString(ARG_ITEM_ID)]
             mItem?.let {
-                activity.toolbar_layout?.title = it.content
+                activity?.toolbar_layout?.title = it.content
             }
         }
     }
